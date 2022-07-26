@@ -15,7 +15,7 @@ import { CgWebsite } from "react-icons/cg";
 import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { HiDotsVertical } from "react-icons/hi";
 import NFTCard from "../../components/NFTCard";
-import { ICollection } from "../../interfaces/ICollection";
+// import { ICollection } from "../../interfaces/ICollection";
 
 const style = {
   bannerImageContainer: `h-[20vh] w-screen overflow-hidden flex justify-center items-center`,
@@ -49,10 +49,7 @@ const Collection = () => {
 
   const nftModule = useMemo(() => {
     if (!provider) return;
-    const sdk = new ThirdwebSDK(
-      provider.getSigner(),
-      "https://eth-rinkeby.alchemyapi.io/v2/NthD7LAzSz28R85ZiXn1sjeJf2h1a7un"
-    );
+    const sdk = new ThirdwebSDK(provider.getSigner());
     return sdk.getNFTModule(collectionId);
   }, [provider]);
 
@@ -66,10 +63,7 @@ const Collection = () => {
 
   const marketPlaceModule = useMemo(() => {
     if (!provider) return;
-    const sdk = new ThirdwebSDK(
-      provider.getSigner(),
-      "https://eth-rinkeby.alchemyapi.io/v2/NthD7LAzSz28R85ZiXn1sjeJf2h1a7un"
-    );
+    const sdk = new ThirdwebSDK(provider.getSigner());
     return sdk.getMarketplaceModule(
       "0x989C495007f31648532Bb3f7118ac7288273a9e9"
     );
